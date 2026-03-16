@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gem Tower Defense</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="mainMenu" class="screen">
+    <div class="menu-card">
+        <h1>Gem Tower Defense</h1>
+        <p>
+            Broń swojej bazy za pomocą magicznych klejnotów. Buduj wieże,
+            ulepszaj je, sprzedawaj i przetrwaj 12 fal przeciwników.
+        </p>
+
+        <div class="menu-features">
+            <div>💎 5 typów klejnotów</div>
+            <div>⚡ Przyspieszanie czasu</div>
+            <div>🛠 Sprzedaż wież</div>
+            <div>👑 Boss w ostatniej fali</div>
+        </div>
+
+        <button id="menuStartBtn" class="big-btn">Start gry</button>
+    </div>
+</div>
+
+<div id="gameScreen" class="screen hidden">
+    <div class="app">
+        <section class="hud-left">
+            <div class="panel stats">
+                <div><span>HP bazy</span><strong id="baseHpValue">0</strong></div>
+                <div><span>Fala</span><strong id="waveValue">0</strong></div>
+                <div><span>Pozostało</span><strong id="enemiesLeftValue">0</strong></div>
+            </div>
+
+            <div class="panel">
+                <h2>Wybrana wieża</h2>
+                <div id="selectedTowerPanel" class="selected-tower-panel">
+                    <p>Nie wybrano wieży.</p>
+                </div>
+                <button id="upgradeBtn" class="action-btn" disabled>Ulepsz</button>
+                <button id="sellBtn" class="action-btn sell-btn" disabled>Sprzedaj</button>
+            </div>
+
+            <div class="panel build-panel">
+                <h2>Budowa wież</h2>
+                <div class="build-buttons">
+                    <button class="build-btn emerald" data-tower="emerald">
+                        Szmaragd
+                        <small>70 gold</small>
+                    </button>
+                    <button class="build-btn ruby" data-tower="ruby">
+                        Rubin
+                        <small>95 gold</small>
+                    </button>
+                    <button class="build-btn diamond" data-tower="diamond">
+                        Diament
+                        <small>115 gold</small>
+                    </button>
+                    <button class="build-btn amethyst" data-tower="amethyst">
+                        Ametyst
+                        <small>100 gold</small>
+                    </button>
+                    <button class="build-btn topaz" data-tower="topaz">
+                        Topaz
+                        <small>85 gold</small>
+                    </button>
+                </div>
+                <p class="hint">Kliknij przycisk, potem wolne pole na mapie.</p>
+            </div>
+        </section>
+
+        <section class="hud-center">
+            <div class="hud-top">
+                <div class="panel gold-panel">
+                    <span>Gold</span>
+                    <strong id="goldValue">0</strong>
+                </div>
+            </div>
+
+            <main class="game-area">
+                <div class="canvas-wrap">
+                    <canvas id="gameCanvas" width="980" height="640"></canvas>
+
+                    <div class="top-banner">
+                        <div id="waveBanner" class="wave-banner hidden"></div>
+                    </div>
+
+                    <div id="overlay" class="overlay hidden">
+                        <div class="overlay-card">
+                            <h2 id="overlayTitle">Game Over</h2>
+                            <p id="overlayText"></p>
+                            <button id="overlayRestartBtn" class="action-btn">Zagraj ponownie</button>
+                            <button id="overlayMenuBtn" class="action-btn secondary">Menu</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <section class="hud-right">
+            <div class="panel">
+                <h2>Sterowanie</h2>
+                <ul class="controls">
+                    <li>Spacja — start kolejnej fali</li>
+                    <li>1 / 2 / 3 — tempo gry</li>
+                    <li>ESC — anuluj budowę</li>
+                    <li>Klik wieży — wybór</li>
+                </ul>
+            </div>
+
+            <div class="panel">
+                <h2>Status</h2>
+                <p id="statusText">Kliknij Spację, aby rozpocząć pierwszą falę.</p>
+                <button id="startWaveBtn" class="action-btn">Start fali</button>
+                <button id="autoWaveBtn" class="action-btn secondary">Auto fale: WYŁ</button>
+                <button id="restartBtn" class="action-btn secondary">Restart gry</button>
+                <button id="backToMenuBtn" class="action-btn secondary">Menu</button>
+            </div>
+
+            <div class="panel">
+                <h2>Tempo gry</h2>
+                <div class="speed-buttons">
+                    <button class="speed-btn active" data-speed="1">x1</button>
+                    <button class="speed-btn" data-speed="2">x2</button>
+                    <button class="speed-btn" data-speed="3">x3</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
